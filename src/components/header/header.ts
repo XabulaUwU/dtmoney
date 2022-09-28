@@ -21,7 +21,7 @@ export const Content = styled.div`
     color: #fff;
 
     &:hover {
-      filter: opacity(0.9);
+      filter: opacity(0.75);
     }
   }
 `;
