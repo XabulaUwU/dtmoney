@@ -31,3 +31,17 @@ export const Container = styled.form`
     }
   }
 `;
+export const ButtonContainerStyle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  button {
+    width: 14rem;
+    background-color: #fff;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+`;
