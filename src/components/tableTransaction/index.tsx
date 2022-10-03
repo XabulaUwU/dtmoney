@@ -1,16 +1,15 @@
-import { useEffect } from "react";
-import { api } from "../../services/api";
+import { useContext } from "react";
+import { TransactionsContext } from "../../context/transactionContext";
 import { Summary } from "../summary";
 import { Container } from "./table";
 import { TableRowInfo } from "./tablerow";
 
 export function TransactionTable() {
-  useEffect(() => {
-    api.get("transactions").then(({ data }) => console.log(data));
-  }, []);
+  const { transactions } = useContext(TransactionsContext);
+
   return (
     <Container>
-      <Summary/>
+      <Summary />
       <table>
         <thead>
           <tr>
@@ -21,20 +20,18 @@ export function TransactionTable() {
           </tr>
         </thead>
         <tbody>
-          <TableRowInfo
-            title="Dev Site"
-            category="Sold"
-            date="25/09/2022"
-            type="deposit"
-            value={12000}
-          />
-          <TableRowInfo
-            title="Rent"
-            category="House"
-            date="20/09/2022"
-            type="withdraw"
-            value={1800}
-          />
+          {transactions.map((e) => {
+            return (
+              <TableRowInfo
+                key={e.id}
+                title={e.title}
+                category={e.category}
+                date={e.date}
+                type={e.type}
+                value={e.value}
+              />
+            );
+          })}
         </tbody>
       </table>
     </Container>
